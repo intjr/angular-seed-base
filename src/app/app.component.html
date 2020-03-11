@@ -1,0 +1,72 @@
+<app-d></app-d>
+<h2>第一节 - 创建最简单的输入框</h2>
+<input type="text" [(ngModel)]="username">
+    {{username}}
+<h2>第二节 - 添加简单的验证功能</h2>
+    <input 
+     type="text" 
+     required
+     [(ngModel)]="username"
+     #userName="ngModel">
+    {{userName.valid}}
+<h2>第三节 - 显示验证失败的错误信息</h2>
+<h2>第四节 - 创建表单</h2>
+<h2>第五节 - ngModelGroup简介</h2>
+<h2>第六节 - 表单添加验证状态样式</h2>
+<h2>第七节 - 表单控件的状态</h2>
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+   <fieldset ngModelGroup="user">
+    <input 
+     type="text" 
+     required
+     minlength="3"
+     name="username"
+     [(ngModel)]="username"
+     #userName="ngModel">
+    <hr>
+    <p>Name控件的valid状态：{{userName.valid}} - 表示控件有效</p>
+    <p>Name控件的invalid状态：{{userName.invalid}} - 表示控件无效</p>
+    <p>Name控件的pristine状态：{{userName.pristine}} - 表示控件值未改变</p>
+    <p>Name控件的dirty状态：{{userName.dirty}} - 表示控件值已改变</p>
+    <p>Name控件的touched状态：{{userName.touched}} - 表示控件已被访问过</p>
+    <p>Name控件的untouched状态：{{userName.untouched}} - 表示控件未被访问过</p>
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+        {{userName.errors?.minlength.actualLength}}
+    </div>
+    <input type="password" required ngModel name="password">
+   </fieldset>
+    <button type="submit">提交</button>
+    <hr>
+    {{loginForm.value | json}}
+  </form>
+<h2>第八节 - 使用单选控件</h2>
+<form #loginForm1="ngForm" (ngSubmit)="onSubmit(loginForm.value)">
+   <fieldset ngModelGroup="user">
+    <input 
+     type="text" 
+     required
+     minlength="3"
+     name="username"
+     [(ngModel)]="username"
+     #userName="ngModel">
+    <hr>
+    <p>Name控件的valid状态：{{userName.valid}} - 表示控件有效</p>
+    <p>Name控件的invalid状态：{{userName.invalid}} - 表示控件无效</p>
+    <p>Name控件的pristine状态：{{userName.pristine}} - 表示控件值未改变</p>
+    <p>Name控件的dirty状态：{{userName.dirty}} - 表示控件值已改变</p>
+    <p>Name控件的touched状态：{{userName.touched}} - 表示控件已被访问过</p>
+    <p>Name控件的untouched状态：{{userName.untouched}} - 表示控件未被访问过</p>
+    <div *ngIf="userName.errors?.required">请您输入用户名</div>
+    <div *ngIf="userName.errors?.minlength">
+      用户名的长度必须大于 {{userName.errors?.minlength.requiredLength}}，当前的长度为
+        {{userName.errors?.minlength.actualLength}}
+    </div>
+    <input type="password" required ngModel name="password">
+   </fieldset>
+    <button type="submit">提交</button>
+    <hr>
+    {{loginForm.value | json}}
+  </form>
+<h2>第九节 - 使用多选控件</h2>
